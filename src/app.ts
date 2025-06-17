@@ -5,8 +5,9 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 import logger from './utils/logger';
 import { dev, port } from './utils/helpers';
-import listRoutes from './routes/list.routes';
-import itemRoutes from './routes/item.routes';
+import listCar from './routes/Car.routes';
+import listDealer from './routes/CarDealer.routes';
+import listMake from './routes/CarMake.routes';
 import { OK, INTERNAL_SERVER_ERROR } from './utils/http-status';
 
 // Load environment variables
@@ -26,14 +27,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-app.use('/api/lists', listRoutes);
-app.use('/api/lists/:listId/items', itemRoutes);
+app.use('/api/cardealer', listDealer);
+app.use('/api/carmake', listMake);
+app.use('/api/car', listCar);
+
 
 // Basic route
 app.get('/', (req: Request, res: Response) => {
   res
     .status(OK)
-    .json({ message: 'List & Items API - Welcome!' });
+    .json({ message: 'Car API - Welcome!' });
 });
 
 // Basic error handling middleware
