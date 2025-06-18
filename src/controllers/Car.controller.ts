@@ -1,21 +1,63 @@
 import { Request, Response } from 'express';
 import { CarStore } from '../store/Car.store';
 import { cardealerStore } from '../store/CarDealer.store';
+import {carmakeStore} from '../store/CarMake.store'
 import { OK, CREATED, BAD_REQUEST, NOT_FOUND } from '../utils/http-status';
+
+
 
 export const createCar = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { title, description = '' } = req.body;
+    const {
+      dealerId,
+      carMakeId,
+      name,
+      price,
+      year,
+      color,
+      wheelsCount
+    } = req.body;
 
-    if (!title) {
+    // التحقق من الحقول المطلوبة
+    if (!dealerId || !carMakeId || !name || !price || !year || !color || !wheelsCount) {
       res.status(BAD_REQUEST).json({
         success: false,
-        error: 'Title is required',
+        error: ' All are required ',
       });
       return;
     }
 
-    const car = CarStore.create({ title, description });
+    // تحقق من وجود التاجر
+    const dealer = await cardealerStore.findById(dealerId);
+    if (!dealer) {
+      res.status(NOT_FOUND).json({
+        success: false,
+        error: 'Car dealer not found ',
+      });
+      return;
+    }
+
+    // تحقق من وجود الشركة المصنعة
+    const make = await carmakeStore.findById(carMakeId);
+    if (!make) {
+      res.status(NOT_FOUND).json({
+        success: false,
+        error: 'Car make غير موجود',
+      });
+      return;
+    }
+
+    // إنشاء السيارة
+    const car = await CarStore.create({
+      dealerId,
+      carMakeId,
+      name,
+      price,
+      year,
+      color,
+      wheelsCount
+    });
+
     res.status(CREATED).json({
       success: true,
       data: car,
@@ -23,97 +65,92 @@ export const createCar = async (req: Request, res: Response): Promise<void> => {
   } catch (error) {
     res.status(BAD_REQUEST).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Failed to create list',
+      error: error instanceof Error ? error.message : ' Failed to create Car  ',
     });
   }
 };
 
+
 export const getCars = async (_req: Request, res: Response): Promise<void> => {
   try {
-    const lists = listStore.findAll();
+    const cars =CarStore.findAll();
     res.status(OK).json({
       success: true,
-      data: lists,
+      data: cars,
     });
   } catch (error) {
     res.status(BAD_REQUEST).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Failed to fetch lists',
+      error: error instanceof Error ? error.message : 'Failed to fetch Cars',
     });
   }
 };
 
 export const getCar = async (req: Request, res: Response): Promise<void> => {
   try {
-    const list = listStore.findById(req.params.id);
-    if (!list) {
+    const { id } = req.params;
+
+    const car = await CarStore.findById(id);
+    if (!car) {
       res.status(NOT_FOUND).json({
         success: false,
-        error: 'List not found',
+        error: 'Car not found',
       });
       return;
     }
 
-    const items = itemStore.findByListId(list.id);
     res.status(OK).json({
       success: true,
-      data: {
-        ...list,
-        items,
-      },
+      data: car,
     });
   } catch (error) {
     res.status(BAD_REQUEST).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Failed to fetch list',
+      error: error instanceof Error ? error.message : 'Failed to fetch car',
     });
   }
 };
+
 
 export const updateCar = async (req: Request, res: Response): Promise<void> => {
   try {
-    const list = listStore.update(req.params.id, req.body);
-    if (!list) {
+    const car = CarStore.update(req.params.id, req.body);
+    if (!car) {
       res.status(NOT_FOUND).json({
         success: false,
-        error: 'List not found',
+        error: 'Car not found',
       });
       return;
     }
     res.status(OK).json({
       success: true,
-      data: list,
+      data: car,
     });
   } catch (error) {
     res.status(BAD_REQUEST).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Failed to update list',
+      error: error instanceof Error ? error.message : 'Failed to update Car',
     });
   }
 };
 
+
 export const deleteCar = async (req: Request, res: Response): Promise<void> => {
   try {
-    const deleted = listStore.delete(req.params.id);
-    if (!deleted) {
+    const { id } = req.params;
+    const car = CarStore.findById(id);
+    if (!car) {
       res.status(NOT_FOUND).json({
         success: false,
-        error: 'List not found',
+        error: 'Car not found',
       });
       return;
     }
 
-    // Delete all items in the list
-    itemStore.deleteByListId(req.params.id);
-
-    res.status(OK).json({
-      success: true,
-      data: {},
-    });
   } catch (error) {
     res.status(BAD_REQUEST).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Failed to delete list',
+      error: error instanceof Error ? error.message : 'Failed to delete Car ',
     });
   }
 }; 
