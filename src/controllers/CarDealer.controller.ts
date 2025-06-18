@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { cardealerStore } from '../store/CarDealer.store';
-import { CarStore } from '../store/Car.store';
 import { OK, CREATED, BAD_REQUEST, NOT_FOUND } from '../utils/http-status';
 
 

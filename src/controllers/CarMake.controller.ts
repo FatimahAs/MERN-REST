@@ -1,165 +1,134 @@
 import { Request, Response } from 'express';
-import { itemStore } from '../store/CarDealer.store';
-import { listStore } from '../store/Car.store';
+import { carmakeStore } from '../store/CarMake.store';
 import { OK, CREATED, BAD_REQUEST, NOT_FOUND } from '../utils/http-status';
 
-export const createCarMake = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const { listId } = req.params;
-    const { title, description = '', completed = false } = req.body;
 
-    if (!title) {
+export const createMake = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { country, brand } = req.body;
+
+    // تحقق من الحقول المطلوبة
+    if (!country || !brand ) {
       res.status(BAD_REQUEST).json({
         success: false,
-        error: 'Title is required',
+        error: 'Country and Brand  are required',
       });
       return;
     }
 
-    const list = listStore.findById(listId);
-    if (!list) {
-      res.status(NOT_FOUND).json({
-        success: false,
-        error: 'List not found',
-      });
-      return;
-    }
+    const make = await carmakeStore.create({
+      country,
+      brand
+    });
 
-    const item = itemStore.create({ listId, title, description, completed });
     res.status(CREATED).json({
       success: true,
-      data: item,
+      data: make,
     });
   } catch (error) {
     res.status(BAD_REQUEST).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Failed to create item',
+      error: error instanceof Error ? error.message : 'Failed to create Make',
     });
   }
 };
 
-export const getCarMakes = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const { listId } = req.params;
-    const list = listStore.findById(listId);
-    if (!list) {
-      res.status(NOT_FOUND).json({
-        success: false,
-        error: 'List not found',
-      });
-      return;
-    }
 
-    const items = itemStore.findByListId(listId);
+
+export const getMakes = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const makes = await carmakeStore.findAll(); // جلب كل car makes
+
     res.status(OK).json({
       success: true,
-      data: items,
+      data: makes,
     });
   } catch (error) {
     res.status(BAD_REQUEST).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Failed to fetch items',
+      error: error instanceof Error ? error.message : 'Failed to fetch Makes',
     });
   }
 };
 
-export const getCarMake = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const { listId, id } = req.params;
-    const list = listStore.findById(listId);
-    if (!list) {
-      res.status(NOT_FOUND).json({
-        success: false,
-        error: 'List not found',
-      });
-      return;
-    }
 
-    const item = itemStore.findById(id);
-    if (!item || item.listId !== listId) {
+export const getMake = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { id } = req.params;
+
+    const make = await carmakeStore.findById(id);
+    if (!make) {
       res.status(NOT_FOUND).json({
         success: false,
-        error: 'Item not found in this list',
+        error: 'Car Make not found',
       });
       return;
     }
 
     res.status(OK).json({
       success: true,
-      data: item,
+      data: make,
     });
   } catch (error) {
     res.status(BAD_REQUEST).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Failed to fetch item',
+      error: error instanceof Error ? error.message : 'Failed to fetch Make',
     });
   }
 };
 
-export const updateCarMakes = async (req: Request, res: Response): Promise<void> => {
+
+
+export const updateMake = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { listId, id } = req.params;
-    const list = listStore.findById(listId);
-    if (!list) {
+    const { id } = req.params;
+    const { country, brand } = req.body;
+
+    const make = await carmakeStore.findById(id);
+    if (!make) {
       res.status(NOT_FOUND).json({
         success: false,
-        error: 'List not found',
+        error: 'Dealer not found',
       });
       return;
     }
 
-    const existingItem = itemStore.findById(id);
-    if (!existingItem || existingItem.listId !== listId) {
-      res.status(NOT_FOUND).json({
-        success: false,
-        error: 'Item not found in this list',
-      });
-      return;
-    }
+    // تحديث القيم إذا كانت موجودة في الطلب
+    if (country !== undefined) make.country = country;
+    if (brand !== undefined) make.brand = brand;
+  
 
-    const item = itemStore.update(id, req.body);
+  
+
     res.status(OK).json({
       success: true,
-      data: item,
+      data: make,
     });
   } catch (error) {
     res.status(BAD_REQUEST).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Failed to update item',
+      error: error instanceof Error ? error.message : 'Failed to update Make',
     });
   }
 };
 
-export const deleteCarMake = async (req: Request, res: Response): Promise<void> => {
+
+export const deleteMake = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { listId, id } = req.params;
-    const list = listStore.findById(listId);
-    if (!list) {
+    const { id } = req.params;
+    const carmake = carmakeStore.findById(id);
+    if (!carmake) {
       res.status(NOT_FOUND).json({
         success: false,
-        error: 'List not found',
+        error: 'Car Dealer not found',
       });
       return;
     }
 
-    const existingItem = itemStore.findById(id);
-    if (!existingItem || existingItem.listId !== listId) {
-      res.status(NOT_FOUND).json({
-        success: false,
-        error: 'Item not found in this list',
-      });
-      return;
-    }
-
-    itemStore.delete(id);
-    res.status(OK).json({
-      success: true,
-      data: {},
-    });
   } catch (error) {
     res.status(BAD_REQUEST).json({
       success: false,
-      error: error instanceof Error ? error.message : 'Failed to delete item',
+      error: error instanceof Error ? error.message : 'Failed to delete Car Make',
     });
   }
 }; 
