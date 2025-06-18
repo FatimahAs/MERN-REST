@@ -3,7 +3,7 @@ import { carmakeStore } from '../store/CarMake.store';
 import { OK, CREATED, BAD_REQUEST, NOT_FOUND } from '../utils/http-status';
 
 
-export const createMake = async (req: Request, res: Response): Promise<void> => {
+export const createCarMake = async (req: Request, res: Response): Promise<void> => {
   try {
     const { country, brand } = req.body;
 
@@ -35,7 +35,7 @@ export const createMake = async (req: Request, res: Response): Promise<void> => 
 
 
 
-export const getMakes = async (req: Request, res: Response): Promise<void> => {
+export const getCarMakes = async (req: Request, res: Response): Promise<void> => {
   try {
     const makes = await carmakeStore.findAll(); // جلب كل car makes
 
@@ -52,7 +52,7 @@ export const getMakes = async (req: Request, res: Response): Promise<void> => {
 };
 
 
-export const getMake = async (req: Request, res: Response): Promise<void> => {
+export const getCarMake = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
 
@@ -79,7 +79,7 @@ export const getMake = async (req: Request, res: Response): Promise<void> => {
 
 
 
-export const updateMake = async (req: Request, res: Response): Promise<void> => {
+export const updateCarMakes = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
     const { country, brand } = req.body;
@@ -113,7 +113,7 @@ export const updateMake = async (req: Request, res: Response): Promise<void> => 
 };
 
 
-export const deleteMake = async (req: Request, res: Response): Promise<void> => {
+export const deleteCarMake = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
     const carmake = carmakeStore.findById(id);

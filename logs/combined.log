@@ -39,3 +39,9 @@
 {"level":"info","message":"DELETE /api/lists/list-id-here 404 42 - 1.110 ms","timestamp":"2025-06-17T09:30:48.589Z"}
 {"level":"info","message":"GET /api/lists/01JXYKG9DW7C84XGARC33EYRYG 200 215 - 0.625 ms","timestamp":"2025-06-17T09:30:59.186Z"}
 {"level":"info","message":"GET / 304 - - 3.845 ms","timestamp":"2025-06-17T09:36:27.568Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-06-18T04:38:40.689Z"}
+{"level":"info","message":"POST /api/carmake 201 172 - 27.263 ms","timestamp":"2025-06-18T04:38:41.728Z"}
+{"level":"info","message":"POST /api/cardealer 201 193 - 3.389 ms","timestamp":"2025-06-18T04:42:58.817Z"}
+{"level":"info","message":"POST /api/car 201 295 - 2.241 ms","timestamp":"2025-06-18T04:46:01.861Z"}
+{"level":"info","message":"GET /api/car 200 297 - 2.997 ms","timestamp":"2025-06-18T04:46:32.257Z"}
+{"level":"info","message":"POST /api/car 201 295 - 1.883 ms","timestamp":"2025-06-18T04:46:43.680Z"}
