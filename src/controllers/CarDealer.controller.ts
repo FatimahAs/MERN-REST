@@ -3,6 +3,7 @@ import { itemStore } from '../store/CarDealer.store';
 import { listStore } from '../store/Car.store';
 import { OK, CREATED, BAD_REQUEST, NOT_FOUND } from '../utils/http-status';
 
+
 export const createDealer = async (req: Request, res: Response): Promise<void> => {
   try {
     const { listId } = req.params;
@@ -38,6 +39,7 @@ export const createDealer = async (req: Request, res: Response): Promise<void> =
   }
 };
 
+
 export const getDealers = async (req: Request, res: Response): Promise<void> => {
   try {
     const { listId } = req.params;
@@ -62,6 +64,7 @@ export const getDealers = async (req: Request, res: Response): Promise<void> => 
     });
   }
 };
+
 
 export const getDealer = async (req: Request, res: Response): Promise<void> => {
   try {
@@ -96,6 +99,7 @@ export const getDealer = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
+
 export const updateDealer = async (req: Request, res: Response): Promise<void> => {
   try {
     const { listId, id } = req.params;
@@ -129,6 +133,7 @@ export const updateDealer = async (req: Request, res: Response): Promise<void> =
     });
   }
 };
+
 
 export const deleteDealer = async (req: Request, res: Response): Promise<void> => {
   try {

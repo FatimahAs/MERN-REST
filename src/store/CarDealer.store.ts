@@ -26,7 +26,7 @@ const findById = (id: string): CarDealer | undefined => {
 }
 
 const findByCarDealerId = (cardealerId: string): CarDealer[] => {
-  return findAll().filter(cardealer => cardealer.cardealerId === cardealerId);
+  return findAll().filter(cardealer => cardealer.id === cardealerId);
 }
 
 const update = (id: string, data: Partial<Omit<CarDealer, 'id' | 'cardealerId' | 'createdAt'>>): CarDealer | undefined => {
@@ -46,8 +46,6 @@ const update = (id: string, data: Partial<Omit<CarDealer, 'id' | 'cardealerId' |
 const deleteCarDealers = (id: string): boolean => {
   return cardealers.delete(id);
 }
-
-
 
 
 const deleteByCarDealersId = (cardealerId: string): void => {
