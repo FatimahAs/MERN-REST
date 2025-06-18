@@ -45,3 +45,41 @@
 {"level":"info","message":"POST /api/car 201 295 - 2.241 ms","timestamp":"2025-06-18T04:46:01.861Z"}
 {"level":"info","message":"GET /api/car 200 297 - 2.997 ms","timestamp":"2025-06-18T04:46:32.257Z"}
 {"level":"info","message":"POST /api/car 201 295 - 1.883 ms","timestamp":"2025-06-18T04:46:43.680Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-06-18T15:03:05.506Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-06-18T15:04:12.882Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-06-18T15:04:55.359Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-06-18T15:22:49.723Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T15:22:51.413Z"}
+{"level":"info","message":"All collections dropped","timestamp":"2025-06-18T15:22:51.885Z"}
+{"level":"info","message":"POST /api/cardealer 201 200 - 173.197 ms","timestamp":"2025-06-18T15:30:17.045Z"}
+{"level":"info","message":"POST /api/cardealer 201 199 - 126.183 ms","timestamp":"2025-06-18T15:33:33.145Z"}
+{"level":"info","message":"GET /api/cardealer 200 378 - 118.058 ms","timestamp":"2025-06-18T15:33:42.133Z"}
+{"level":"info","message":"POST /api/carmake 201 174 - 246.129 ms","timestamp":"2025-06-18T15:36:00.953Z"}
+{"level":"info","message":"POST /api/carmake 201 178 - 136.912 ms","timestamp":"2025-06-18T15:36:26.028Z"}
+{"level":"info","message":"GET /api/carmake 200 331 - 374.174 ms","timestamp":"2025-06-18T15:36:32.466Z"}
+{"level":"info","message":"POST /api/carmake 201 175 - 105.998 ms","timestamp":"2025-06-18T15:40:05.256Z"}
+{"level":"info","message":"POST /api/car 404 49 - 185.845 ms","timestamp":"2025-06-18T15:41:42.074Z"}
+{"level":"info","message":"POST /api/car 404 49 - 100.041 ms","timestamp":"2025-06-18T15:42:13.422Z"}
+{"level":"info","message":"POST /api/car 404 49 - 102.905 ms","timestamp":"2025-06-18T15:42:33.090Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-06-18T15:44:38.590Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T15:44:40.064Z"}
+{"level":"info","message":"All collections dropped","timestamp":"2025-06-18T15:44:40.667Z"}
+{"level":"info","message":"POST /api/car 404 49 - 1640.635 ms","timestamp":"2025-06-18T15:44:40.883Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-06-18T15:48:19.339Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T15:48:20.785Z"}
+{"level":"info","message":"All collections dropped","timestamp":"2025-06-18T15:48:21.480Z"}
+{"level":"info","message":"POST /api/car 404 49 - 135.470 ms","timestamp":"2025-06-18T15:48:24.205Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-06-18T15:49:40.456Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T15:49:41.692Z"}
+{"level":"info","message":"All collections dropped","timestamp":"2025-06-18T15:49:42.149Z"}
+{"level":"info","message":"POST /api/car 404 49 - 203.428 ms","timestamp":"2025-06-18T15:51:46.789Z"}
+{"level":"info","message":"POST /api/cardealer 201 199 - 160.456 ms","timestamp":"2025-06-18T15:52:47.533Z"}
+{"level":"info","message":"POST /api/car 404 46 - 218.718 ms","timestamp":"2025-06-18T15:53:40.912Z"}
+{"level":"info","message":"POST /api/carmake 201 178 - 201.015 ms","timestamp":"2025-06-18T15:57:02.162Z"}
+{"level":"info","message":"POST /api/car 201 298 - 333.389 ms","timestamp":"2025-06-18T15:57:14.646Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-06-18T16:00:00.522Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T16:00:02.436Z"}
+{"level":"info","message":"All collections dropped","timestamp":"2025-06-18T16:00:02.902Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-06-18T16:01:30.541Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T16:01:31.815Z"}
+{"level":"info","message":"All collections dropped","timestamp":"2025-06-18T16:01:32.250Z"}

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { CarStore } from '../store/Car.store';
-import { cardealerStore } from '../store/CarDealer.store';
-import {carmakeStore} from '../store/CarMake.store'
+import  Car  from '../models/Car.model';
+import  CarDealer  from '../models/CarDealer.model';
+import CarMake from '../models/CarMake.model'
 import { OK, CREATED, BAD_REQUEST, NOT_FOUND } from '../utils/http-status';
 
 
@@ -28,7 +28,7 @@ export const createCar = async (req: Request, res: Response): Promise<void> => {
     }
 
     // تحقق من وجود التاجر
-    const dealer = await cardealerStore.findById(dealerId);
+    const dealer = await CarDealer.findById(dealerId);
     if (!dealer) {
       res.status(NOT_FOUND).json({
         success: false,
@@ -38,17 +38,17 @@ export const createCar = async (req: Request, res: Response): Promise<void> => {
     }
 
     // تحقق من وجود الشركة المصنعة
-    const make = await carmakeStore.findById(carMakeId);
+    const make = await CarMake.findById(carMakeId);
     if (!make) {
       res.status(NOT_FOUND).json({
         success: false,
-        error: 'Car make غير موجود',
+        error: 'Car make not found',
       });
       return;
     }
 
     // إنشاء السيارة
-    const car = await CarStore.create({
+    const car = await Car.create({
       dealerId,
       carMakeId,
       name,
@@ -73,7 +73,7 @@ export const createCar = async (req: Request, res: Response): Promise<void> => {
 
 export const getCars = async (_req: Request, res: Response): Promise<void> => {
   try {
-    const cars =CarStore.findAll();
+    const cars =Car.find();
     res.status(OK).json({
       success: true,
       data: cars,
@@ -90,7 +90,7 @@ export const getCar = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
 
-    const car = await CarStore.findById(id);
+    const car = await Car.findById(id);
     if (!car) {
       res.status(NOT_FOUND).json({
         success: false,
@@ -114,7 +114,12 @@ export const getCar = async (req: Request, res: Response): Promise<void> => {
 
 export const updateCar = async (req: Request, res: Response): Promise<void> => {
   try {
-    const car = CarStore.update(req.params.id, req.body);
+    const car = await Car.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true } // يرجع العنصر المحدث + يفعل التحقق
+    );
+
     if (!car) {
       res.status(NOT_FOUND).json({
         success: false,
@@ -122,6 +127,7 @@ export const updateCar = async (req: Request, res: Response): Promise<void> => {
       });
       return;
     }
+
     res.status(OK).json({
       success: true,
       data: car,
@@ -138,7 +144,7 @@ export const updateCar = async (req: Request, res: Response): Promise<void> => {
 export const deleteCar = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
-    const car = CarStore.findById(id);
+    const car = Car.findById(id);
     if (!car) {
       res.status(NOT_FOUND).json({
         success: false,

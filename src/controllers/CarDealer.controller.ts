@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { cardealerStore } from '../store/CarDealer.store';
+import  CarDealer from '../models/CarDealer.model';
 import { OK, CREATED, BAD_REQUEST, NOT_FOUND } from '../utils/http-status';
 
 
@@ -16,7 +16,7 @@ export const createDealer = async (req: Request, res: Response): Promise<void> =
       return;
     }
 
-    const dealer = await cardealerStore.create({
+    const dealer = await CarDealer.create({
       name,
       email,
       city
@@ -38,7 +38,7 @@ export const createDealer = async (req: Request, res: Response): Promise<void> =
 
 export const getDealers = async (req: Request, res: Response): Promise<void> => {
   try {
-    const dealers = await cardealerStore.findAll(); // جلب كل الديلرز
+    const dealers = await CarDealer.find(); // جلب كل الديلرز
 
     res.status(OK).json({
       success: true,
@@ -57,7 +57,7 @@ export const getDealer = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
 
-    const dealer = await cardealerStore.findById(id);
+    const dealer = await CarDealer.findById(id);
     if (!dealer) {
       res.status(NOT_FOUND).json({
         success: false,
@@ -85,7 +85,7 @@ export const updateDealer = async (req: Request, res: Response): Promise<void> =
     const { id } = req.params;
     const { name, email, city } = req.body;
 
-    const dealer = await cardealerStore.findById(id);
+    const dealer = await CarDealer.findById(id);
     if (!dealer) {
       res.status(NOT_FOUND).json({
         success: false,
@@ -117,7 +117,7 @@ export const updateDealer = async (req: Request, res: Response): Promise<void> =
 export const deleteDealer = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
-    const cardealer = cardealerStore.findById(id);
+    const cardealer = CarDealer.findById(id);
     if (!cardealer) {
       res.status(NOT_FOUND).json({
         success: false,

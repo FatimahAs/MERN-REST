@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { carmakeStore } from '../store/CarMake.store';
+import  CarMake from '../models/CarMake.model';
 import { OK, CREATED, BAD_REQUEST, NOT_FOUND } from '../utils/http-status';
 
 
@@ -16,7 +16,7 @@ export const createCarMake = async (req: Request, res: Response): Promise<void> 
       return;
     }
 
-    const make = await carmakeStore.create({
+    const make = await CarMake.create({
       country,
       brand
     });
@@ -37,7 +37,7 @@ export const createCarMake = async (req: Request, res: Response): Promise<void> 
 
 export const getCarMakes = async (req: Request, res: Response): Promise<void> => {
   try {
-    const makes = await carmakeStore.findAll(); // جلب كل car makes
+    const makes = await CarMake.find(); // جلب كل car makes
 
     res.status(OK).json({
       success: true,
@@ -56,7 +56,7 @@ export const getCarMake = async (req: Request, res: Response): Promise<void> => 
   try {
     const { id } = req.params;
 
-    const make = await carmakeStore.findById(id);
+    const make = await CarMake.findById(id);
     if (!make) {
       res.status(NOT_FOUND).json({
         success: false,
@@ -84,7 +84,7 @@ export const updateCarMakes = async (req: Request, res: Response): Promise<void>
     const { id } = req.params;
     const { country, brand } = req.body;
 
-    const make = await carmakeStore.findById(id);
+    const make = await CarMake.findById(id);
     if (!make) {
       res.status(NOT_FOUND).json({
         success: false,
@@ -116,7 +116,7 @@ export const updateCarMakes = async (req: Request, res: Response): Promise<void>
 export const deleteCarMake = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
-    const carmake = carmakeStore.findById(id);
+    const carmake = CarMake.findById(id);
     if (!carmake) {
       res.status(NOT_FOUND).json({
         success: false,

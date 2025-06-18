@@ -1,7 +1,17 @@
-export interface CarMake {
-  id: string;
+import mongoose, { Schema, Document } from 'mongoose';
+
+export interface CarMake extends Document {
   country: string;
   brand: string;
-  createdAt: Date;
-  updatedAt: Date;
 }
+
+const CarMakeSchema: Schema = new Schema(
+  {
+    
+    country: { type: String, required: true },
+    brand: { type: String, required: true },
+  },
+  { timestamps: true }
+);
+
+export default mongoose.model<CarMake>('CarMake', CarMakeSchema);

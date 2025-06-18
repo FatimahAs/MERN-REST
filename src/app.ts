@@ -9,9 +9,19 @@ import listCar from './routes/Car.routes';
 import listDealer from './routes/CarDealer.routes';
 import listMake from './routes/CarMake.routes';
 import { OK, INTERNAL_SERVER_ERROR } from './utils/http-status';
+import { connectDB, deleteAllCollections } from './db/Mongoose';
+
+
 
 // Load environment variables
 dotenv.config();
+
+// Delete all collections
+deleteAllCollections();
+
+// Connect to MongoDB
+connectDB();
+
 
 const app: Express = express();
 
