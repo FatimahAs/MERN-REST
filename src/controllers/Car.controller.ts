@@ -73,7 +73,7 @@ export const createCar = async (req: Request, res: Response): Promise<void> => {
 
 export const getCars = async (_req: Request, res: Response): Promise<void> => {
   try {
-    const cars =Car.find();
+    const cars = await Car.find();
     res.status(OK).json({
       success: true,
       data: cars,
@@ -82,6 +82,8 @@ export const getCars = async (_req: Request, res: Response): Promise<void> => {
     res.status(BAD_REQUEST).json({
       success: false,
       error: error instanceof Error ? error.message : 'Failed to fetch Cars',
+     
+
     });
   }
 };

@@ -16,14 +16,14 @@ export const connectDB = async (): Promise<void> => {
   }
 };
 
-export const deleteAllCollections = async (): Promise<void> => {
-  const collections = mongoose.connection.collections;
-  if (!collections) {
-    logger.error('No collections found');
-    return;
-  }
-  for (const collection of Object.values(collections)) {
-    await collection.drop();
-  }
-  logger.info('All collections dropped');
-};
+//export const deleteAllCollections = async (): Promise<void> => {
+//  const collections = mongoose.connection.collections;
+//  if (!collections) {
+//    logger.error('No collections found');
+//    return;
+//  }
+//  for (const collection of Object.values(collections)) {
+//    await collection.drop();
+//  }
+//  logger.info('All collections dropped');
+//};

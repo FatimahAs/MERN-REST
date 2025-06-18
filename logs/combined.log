@@ -83,3 +83,42 @@
 {"level":"info","message":"Server is running on port 3000","timestamp":"2025-06-18T16:01:30.541Z"}
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T16:01:31.815Z"}
 {"level":"info","message":"All collections dropped","timestamp":"2025-06-18T16:01:32.250Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-06-18T16:15:33.398Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T16:15:34.744Z"}
+{"level":"info","message":"POST /api/carmake 201 178 - 632.010 ms","timestamp":"2025-06-18T16:16:14.831Z"}
+{"level":"info","message":"POST /api/carmake 201 174 - 787.485 ms","timestamp":"2025-06-18T16:16:35.935Z"}
+{"level":"info","message":"POST /api/carmake 201 175 - 105.319 ms","timestamp":"2025-06-18T16:16:46.816Z"}
+{"level":"info","message":"POST /api/carmake 201 179 - 106.844 ms","timestamp":"2025-06-18T16:17:36.104Z"}
+{"level":"info","message":"POST /api/cardealer 201 199 - 103.631 ms","timestamp":"2025-06-18T16:18:22.569Z"}
+{"level":"info","message":"POST /api/cardealer 201 199 - 122.896 ms","timestamp":"2025-06-18T16:18:41.823Z"}
+{"level":"info","message":"POST /api/cardealer 201 199 - 182.777 ms","timestamp":"2025-06-18T16:18:53.667Z"}
+{"level":"info","message":"POST /api/car 201 298 - 331.406 ms","timestamp":"2025-06-18T16:19:52.612Z"}
+{"level":"info","message":"GET /api/cardealer 200 553 - 106.906 ms","timestamp":"2025-06-18T16:20:28.396Z"}
+{"level":"info","message":"GET /api/carmake 200 639 - 119.439 ms","timestamp":"2025-06-18T16:20:50.845Z"}
+{"level":"info","message":"POST /api/car 201 296 - 308.035 ms","timestamp":"2025-06-18T16:21:07.172Z"}
+{"level":"info","message":"POST /api/car 201 297 - 399.988 ms","timestamp":"2025-06-18T16:21:50.276Z"}
+{"level":"info","message":"GET /api/car 400 310 - 8.031 ms","timestamp":"2025-06-18T16:21:54.187Z"}
+{"level":"info","message":"GET /api/car 400 310 - 7.029 ms","timestamp":"2025-06-18T16:22:05.686Z"}
+{"level":"info","message":"GET /api/car 400 310 - 0.659 ms","timestamp":"2025-06-18T16:22:29.460Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-06-18T16:35:06.357Z"}
+{"level":"info","message":"GET /api/car 400 298 - 30.634 ms","timestamp":"2025-06-18T16:35:07.914Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T16:35:08.655Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-06-18T16:36:58.432Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T16:36:59.678Z"}
+{"level":"info","message":"GET /api/car 400 116 - 167.260 ms","timestamp":"2025-06-18T16:37:05.439Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-06-18T16:37:31.189Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T16:37:32.491Z"}
+{"level":"info","message":"GET /api/car 200 847 - 139.872 ms","timestamp":"2025-06-18T16:37:37.478Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-06-18T16:38:39.230Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T16:38:40.671Z"}
+{"level":"info","message":"POST /api/carmake 400 99 - 14.566 ms","timestamp":"2025-06-18T16:50:03.310Z"}
+{"level":"info","message":"GET /api/carmake 200 639 - 144.782 ms","timestamp":"2025-06-18T16:50:13.875Z"}
+{"level":"info","message":"POST /api/carmake 201 186 - 191.629 ms","timestamp":"2025-06-18T16:51:55.527Z"}
+{"level":"info","message":"GET /api/cardealer 200 553 - 107.334 ms","timestamp":"2025-06-18T16:52:22.604Z"}
+{"level":"info","message":"POST /api/cardealer 201 198 - 114.074 ms","timestamp":"2025-06-18T16:52:59.352Z"}
+{"level":"info","message":"GET /api/car 200 847 - 126.352 ms","timestamp":"2025-06-18T16:53:21.017Z"}
+{"level":"info","message":"POST /api/car 201 299 - 624.567 ms","timestamp":"2025-06-18T16:55:57.356Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-06-18T16:56:27.705Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T16:56:29.187Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-06-18T16:57:44.137Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T16:57:45.337Z"}
